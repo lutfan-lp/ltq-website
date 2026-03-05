@@ -23,7 +23,7 @@ export default function CTASection() {
                     <span className="italic text-green-700">Nakrer Sampe' Mateh </span>
                 </h2>
                 <p className="text-gray-400 text-lg font-light mb-10 max-w-lg mx-auto leading-relaxed">
-                    Jangan tunda lagi. Hubungi kami sekarang dan wujudkan impian memiliki putra-putri yang hamilul Qur'an.
+                    من قرء القرأن وعمل بما فیہ ألبس اللہ تعالی والداہ تاجا ؠوم القؠامة
                 </p>
                 <div className="flex items-center justify-center gap-4 flex-wrap">
                     <Link to="/kontak" className="btn-primary">

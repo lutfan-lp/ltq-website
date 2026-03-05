@@ -123,8 +123,8 @@ export default function HeroSection() {
                     transition={{ duration: 0.6, delay: 0.65 }}
                     className="flex items-center justify-center gap-4 flex-wrap mb-16"
                 >
-                    <Link to="/program" className="btn-primary shadow-gold-lg">
-                        Lihat Program Kami
+                    <Link to="/profil" className="btn-primary shadow-gold-lg">
+                        Lihat Profil Kami
                         <ChevronRight size={16} />
                     </Link>
                     <Link to="/kontak" className="btn-outline">

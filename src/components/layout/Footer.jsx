@@ -131,7 +131,7 @@ export default function Footer() {
                         © {new Date().getFullYear()} Lembaga Tahfidhul Qur'an (LTQ). Hak Cipta Dilindungi.
                     </p>
                     <p className="text-xs text-white/20">
-                        Designed with ❤️ for the sake of Al-Qur'an
+                        Made for the sake 🙏 of devotion (Gopek Kun)
                     </p>
                 </div>
             </div>

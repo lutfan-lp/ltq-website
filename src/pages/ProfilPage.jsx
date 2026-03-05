@@ -113,7 +113,7 @@ function FotoSejarah({ foto }) {
             {/* Floating badge */}
             <div className="absolute -bottom-5 -right-5 bg-gradient-to-br from-gold-600 to-gold-400
         text-green-950 rounded-2xl px-5 py-4 shadow-[0_8px_30px_rgba(201,168,76,0.4)] z-10">
-                <p className="font-display text-3xl font-bold leading-none">2009</p>
+                <p className="font-display text-3xl font-bold leading-none">2006</p>
                 <p className="text-xs font-bold uppercase tracking-wider mt-1 text-green-900/70">Tahun Berdiri</p>
             </div>
 
