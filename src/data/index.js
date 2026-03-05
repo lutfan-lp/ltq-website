@@ -226,7 +226,7 @@ export const beritaData = [
         tanggal: '15 Januari 2025',
         penulis: 'Admin LTQ',
         waktuBaca: '3 menit',
-        foto: '../../public/images/berita/juara-mtq.png',           // ← ganti: '/images/berita/mtq-juara1.jpg'
+        foto: '/images/berita/juara-mtq.png',           // ← ganti: '/images/berita/mtq-juara1.jpg'
         fallbackIcon: '🏆',
         fallbackBg: 'from-green-900 to-green-700',
         featured: true,
@@ -260,7 +260,7 @@ export const beritaData = [
         tanggal: '10 Januari 2025',
         penulis: 'Admin LTQ',
         waktuBaca: '4 menit',
-        foto: '../../public/images/berita/ramadan.jpeg',           // ← ganti: '/images/berita/psb-2025.jpg'
+        foto: '/images/berita/ramadan.jpeg',           // ← ganti: '/images/berita/psb-2025.jpg'
         fallbackIcon: '📢',
         fallbackBg: 'from-green-800 to-green-600',
         featured: false,
@@ -309,7 +309,7 @@ export const beritaData = [
         tanggal: '28 Desember 2024',
         penulis: 'Tim Redaksi LTQ',
         waktuBaca: '5 menit',
-        foto: '../../public/images/berita/haflah.jpeg',           // ← ganti: '/images/berita/haflah-khotmil-8.jpg'
+        foto: '/images/berita/haflah.jpeg',           // ← ganti: '/images/berita/haflah-khotmil-8.jpg'
         fallbackIcon: '🎓',
         fallbackBg: 'from-green-950 to-green-800',
         featured: false,
@@ -344,7 +344,7 @@ export const beritaData = [
         tanggal: '20 Desember 2024',
         penulis: 'Tim Redaksi LTQ',
         waktuBaca: '3 menit',
-        foto: '../../public/images/berita/workshop.jpeg',           // ← ganti: '/images/berita/workshop-ustadz.jpg'
+        foto: '/images/berita/workshop.jpeg',           // ← ganti: '/images/berita/workshop-ustadz.jpg'
         fallbackIcon: '📚',
         fallbackBg: 'from-green-900 to-green-700',
         featured: false,
