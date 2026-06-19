@@ -19,9 +19,9 @@ export const lembagaInfo = {
 
 export const statsData = [
     { num: 61, label: 'Santri Aktif', suffix: '' },
-    { num: 81, label: 'Hafidz Lulus', suffix: '+' },
-    { num: 16, label: 'Ustadz & Ustadzah', suffix: '' },
-    { num: 18, label: 'Tahun Berdiri', suffix: '+' },
+    { num: 199, label: 'Alumni', suffix: '+' },
+    { num: 16, label: 'Ustaz & Pengurus', suffix: '' },
+    { num: 2006, label: 'Tahun Berdiri', suffix: '' },
 ]
 
 // ==================== PROGRAM ====================
@@ -69,14 +69,14 @@ export const programData = [
         subtitle: 'Pengembagan Minat & Bakat',
         desc: 'Kegiatan untuk melatih kemampuan santri diluar bidang hafalan untuk membentuk karakter dan kepribadian yang seimbang.',
         features: [
-            'Kajian kitab kuning (Fiqh, Aqidah, Tasawuf)',
+            'Kajian kitab kuning',
             'Organisasi Santri Tahfidh (ORGASTA)',
             'Ajang penampilan bakat santri',
             'Klub cabang olahraga (futsal, voli, bulu tangkis dan catur)',
             'Forum seni dan sastra (Asy-Syu\'ara\')',
             'Forum mahasiswa LTQ (FORMAL)',
         ],
-        penjab: 'Pengurus DOK',
+        penjab: 'Pengurus DOK P2AL & Mudarasah LTQ',
         objek: 'Santri yang memiliki kemauan lebih',
         color: 'from-green-950 to-green-800',
     },
@@ -92,12 +92,12 @@ export const programData = [
 
 export const santriData = [
     // ── Takhassus (30 juz) ───────────────────────────────────────
-    { id: 1, nama: 'Miftahul Arifin', tingkat: 'T', juz: 30, awalMenghafal: '2017' },
-    { id: 2, nama: 'Ali Akbar Nafis', tingkat: 'T', juz: 30, awalMenghafal: '2015' },
+    { id: 1, nama: 'Ali Akbar Nafis', tingkat: 'T', juz: 30, awalMenghafal: '2015' },
+    { id: 2, nama: 'Miftahul Arifin', tingkat: 'T', juz: 30, awalMenghafal: '2017' },
     { id: 3, nama: 'Fathorrahman', tingkat: 'T', juz: 30, awalMenghafal: '2017' },
     { id: 4, nama: 'Ahmad Nurhadi', tingkat: 'T', juz: 30, awalMenghafal: '2018' },
     { id: 5, nama: 'Ahmad Fathen Nabil', tingkat: 'T', juz: 30, awalMenghafal: '2017' },
-    { id: 6, nama: 'Lutfan Syafiq', tingkat: 'T', juz: 30, awalMenghafal: '2023' },
+    { id: 6, nama: 'Lutfan Syafiq', tingkat: 'T', juz: 30, awalMenghafal: '2016' },
     { id: 7, nama: 'Moh. Rizal', tingkat: 'T', juz: 30, awalMenghafal: '2023' },
     { id: 8, nama: 'Ach. Hariri', tingkat: 'T', juz: 30, awalMenghafal: '2023' },
     { id: 9, nama: 'Ahmad Ariyanto', tingkat: 'T', juz: 30, awalMenghafal: '2023' },
@@ -105,8 +105,6 @@ export const santriData = [
     { id: 11, nama: 'Moh. Muhyiddin Al-Maulidi', tingkat: 'T', juz: 30, awalMenghafal: '2023' },
     { id: 12, nama: 'Moh. Jailani', tingkat: 'T', juz: 30, awalMenghafal: '2023' },
     { id: 13, nama: 'Toriq Ilham', tingkat: 'T', juz: 30, awalMenghafal: '2023' },
-    { id: 14, nama: 'Muhammad Mahfudzi Bahtiar', tingkat: 'T', juz: 30, awalMenghafal: '2023' },
-    { id: 15, nama: 'Ahmad Rizal Mailul \'Aqifin', tingkat: 'T', juz: 30, awalMenghafal: '2023' },
     { id: 16, nama: 'Faizal Arifin', tingkat: 'T', juz: 30, awalMenghafal: '2024' },
     { id: 17, nama: 'Nazhaqi Firdaus Salam', tingkat: 'T', juz: 30, awalMenghafal: '2024' },
     { id: 18, nama: 'Miftah', tingkat: 'T', juz: 30, awalMenghafal: '2024' },
@@ -135,10 +133,10 @@ export const santriData = [
     { id: 33, nama: 'Riyyan Qomary Riko Putra', tingkat: '3', juz: 11, awalMenghafal: '2022' },
     { id: 34, nama: 'Moh. Rijalul Amin', tingkat: '3', juz: 14, awalMenghafal: '2022' },
     { id: 35, nama: 'Zainurrahman', tingkat: '3', juz: 11, awalMenghafal: '2022' },
-    { id: 36, nama: 'M Rizqi Akbar Al-Mahroini', tingkat: '5', juz: 23, awalMenghafal: '2022' },
     { id: 37, nama: 'Moh. Aqil Mubarak', tingkat: '3', juz: 11, awalMenghafal: '2022' },
     
     // ── Tingkat 2 (Juz 6–10) ─────────────────────────────────────
+    { id: 36, nama: 'M Rizqi Akbar Al-Mahroini', tingkat: '5', juz: 6, awalMenghafal: '2022' },
     { id: 38, nama: 'Moh. Afdhal', tingkat: '2', juz: 6, awalMenghafal: '2023' },
     { id: 39, nama: 'Miftahul Nizar', tingkat: '2', juz: 8, awalMenghafal: '2023' },
     { id: 40, nama: 'Ahmad Panji Hidayat Nur', tingkat: '2', juz: 9, awalMenghafal: '2022' },
@@ -181,7 +179,7 @@ export const tingkatanData = {
 // ==================== JADWAL ====================
 export const jadwalData = [
     { waktu: '03.00', ket: 'WIB', kegiatan: 'Qiyamul Lail & Subuh Berjamaah', detail: 'Shalat tahajjud, witir, dan subuh berjama\'ah di masjid', tag: 'Ibadah', tagColor: 'ibadah' },
-    { waktu: '03.00', ket: 'WIB', kegiatan: 'Muraqabah setengah juz', detail: 'Mengaji bersama setengah juz dengan bacaan tartil', tag: 'Tahsin', tagColor: 'tahsin' },
+    { waktu: '04.30', ket: 'WIB', kegiatan: 'Muraqabah setengah juz', detail: 'Mengaji bersama setengah juz dengan bacaan tartil', tag: 'Tahsin', tagColor: 'tahsin' },
     { waktu: '05.00', ket: 'WIB', kegiatan: 'Setoran Hafalan', detail: 'Setoran hafalan baru kepada pembimbing masing-masing', tag: 'Tahfidz', tagColor: 'tahfidz' },
     { waktu: '07.00', ket: 'WIB', kegiatan: 'Sekolah formal', detail: 'Kegiatan formal bagi yang mendaftarkan diri di satuan pendidikan formal', tag: 'Ekstra', tagColor: 'ekstra' },
     { waktu: '12.30', ket: 'WIB', kegiatan: 'Dzuhur Berjamaah & Istirahat', detail: 'Shalat dzuhur berjama\'ah dilanjutkan makan siang dan istirahat', tag: 'Ibadah', tagColor: 'ibadah' },
@@ -661,44 +659,45 @@ Menyadari akan pentingnya kepengurusan bagi sebuah lembaga yang dapat mengatur, 
             nama: 'KH. Ahmad Basyir Abdullah Sajjad',
             peran: 'Pengasuh & Pendiri',
             ket: 'Ulama kharismatik yang menggagas dan mendirikan LTQ pada tahun 2006 dengan meng-amanah-kan kepada salah satu santri kepercayaan beliau.',
-            foto: null,   // ← ganti: '/images/profil/pendiri-pengasuh.jpg'
+            foto: '/images/profil/pengasuh.png',
         },
         utusan: [
             {
                 nama: 'Ust. Syamsul Hadi',
                 peran: 'Perintis',
-                ket: 'Santri kepercayaan yang mendapat amanah untuk mendirikan wadah bagi santri yang mempunyai himmah untuk menghafal Al-Qur\'an.',
-                foto: null,   // ← ganti: '/images/profil/pendiri-mujahid.jpg'
+                ket: 'Santri kepercayaan yang mendapat amanah mendirikan wadah bagi santri yang mempunyai himmah untuk menghafal Al-Qur\'an.',
+                foto: '/images/profil/ust.samsul.png',
             },
             {
                 nama: 'Ust. Harun Adiyanto',
                 peran: 'Perintis',
-                ket: 'Santri senior yang turut serta merintis pondasi Lembag Tahfidhul Qur\'an.',
-                foto: null,   // ← ganti: '/images/profil/pendiri-fathurrahman.jpg'
+                ket: 'Santri kepercayaan yang turut serta merintis pondasi Lembag Tahfidhul Qur\'an.',
+                foto: '/images/profil/ust.harun.png',
             },
         ],
     },
 
     // ── Riwayat ketua pengurus dari masa ke masa ──────────────────
     riwayatKetua: [
-        { periode: '2006 – 2007', nama: '----------', ket: ' ', foto: null },
-        { periode: '2007 – 2008', nama: '----------', ket: ' ', foto: null },
-        { periode: '2008 – 2009', nama: '----------', ket: ' ', foto: null },
-        { periode: '2009 – 2010', nama: '----------', ket: ' ', foto: null },
-        { periode: '2011 – 2012', nama: '----------', ket: ' ', foto: null },
-        { periode: '2012 – 2013', nama: '----------', ket: ' ', foto: null },
-        { periode: '2013 – 2014', nama: '----------', ket: ' ', foto: null },
-        { periode: '2014 – 2015', nama: '----------', ket: ' ', foto: null },
-        { periode: '2015 – 2016', nama: '----------', ket: ' ', foto: null },
-        { periode: '2016 – 2017', nama: '----------', ket: ' ', foto: null },
-        { periode: '2017 – 2018', nama: '----------', ket: ' ', foto: null },
-        { periode: '2018 – 2019', nama: '----------', ket: ' ', foto: null },
-        { periode: '2019 – 2020', nama: '----------', ket: ' ', foto: null },
-        { periode: '2020 – 2021', nama: '----------', ket: ' ', foto: null },
-        { periode: '2021 – 2022', nama: '----------', ket: ' ', foto: null },
-        { periode: '2022 – 2023', nama: '----------', ket: ' ', foto: null },
-        { periode: '2023 – 2024', nama: '----------', ket: ' ', foto: null },
-        { periode: '2024 – 2025', nama: '----------', ket: ' ', foto: null },
-        { periode: '2025 – kini', nama: '----------', ket: ' ', foto: null },
+        { periode: '2006 – 2007', nama: 'Habib Rahman Haqiqi', ket: ' ', foto: '/images/profil/ust.habib.png' },
+        { periode: '2007 – 2008', nama: 'Fathorrahman', ket: ' ', foto: '/images/profil/ust.oong.png' },
+        { periode: '2008 – 2009', nama: 'Ach. Zaimum Umam', ket: ' ', foto: '/images/profil/ust.zaim.png' },
+        { periode: '2009 – 2010', nama: 'Ach. Faiz Sholeh', ket: ' ', foto: '/images/profil/ust.faiz.png' },
+        { periode: '2010 – 2011', nama: 'Ach. Rofiqi', ket: ' ', foto: '/images/profil/ust.rofiqi.png' },
+        { periode: '2011 – 2012', nama: 'Iskandar Yasin', ket: ' ', foto: '/images/profil/ust.yasin.png' },
+        { periode: '2012 – 2013', nama: 'Ach. Rofiqi', ket: ' ', foto: '/images/profil/ust.rofiqi.png' },
+        { periode: '2013 – 2014', nama: 'Sofyan As-Tsauri', ket: ' ', foto: '/images/profil/ust.shofyan.png' },
+        { periode: '2014 – 2015', nama: 'Zubaidi', ket: ' ', foto: '/images/profil/ust.subaid.png' },
+        { periode: '2015 – 2016', nama: 'Ach. Zaini', ket: ' ', foto: '/images/profil/ust.zaini.png' },
+        { periode: '2016 – 2017', nama: 'M. Rifaki', ket: ' ', foto: '/images/profil/ust.rifaki.png' },
+        { periode: '2017 – 2018', nama: 'Ahmad Jauhari Abbas', ket: ' ', foto: '/images/profil/ust.oyi\'.png' },
+        { periode: '2018 – 2019', nama: 'Moh. Faizi', ket: ' ', foto: '/images/profil/ust.faizi.png' },
+        { periode: '2019 – 2020', nama: 'Ismail Alfaruki', ket: ' ', foto: '/images/profil/ust.alfa.png' },
+        { periode: '2020 – 2021', nama: 'Riqqi Ramadhan', ket: ' ', foto: '/images/profil/riqqi.png' },
+        { periode: '2021 – 2022', nama: 'Moh. Minhaji Hazmin', ket: ' ', foto: '/images/profil/miming.png' },
+        { periode: '2022 – 2023', nama: 'Sholeh', ket: ' ', foto: '/images/profil/sholeh.png' },
+        { periode: '2023 – 2024', nama: 'Ahmad Fahrian Hidayah', ket: ' ', foto: null },
+        { periode: '2024 – 2025', nama: 'Ahmad Nurhadi', ket: ' ', foto: null },
+        { periode: '2025 – kini', nama: 'Ahmad Fathen Nabil', ket: ' ', foto: null },
     ],
 }

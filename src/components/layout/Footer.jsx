@@ -48,7 +48,12 @@ export default function Footer() {
                     <div className="lg:col-span-2">
                         <Link to="/" className="flex items-center gap-3 mb-5">
                             <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gold-600 to-gold-400 flex items-center justify-center shadow-[0_0_20px_rgba(201,168,76,0.3)]">
-                                <span className="font-arabic text-2xl text-green-900">ق</span>
+                                <img
+                                    src="/logo-ltq.png"
+                                    alt="Logo LTQ"
+                                    className="w-full h-full object-cover"
+                                    draggable="false"
+                                />
                             </div>
                             <div>
                                 <p className="font-display text-xl text-gold-400 font-bold">LTQ</p>
