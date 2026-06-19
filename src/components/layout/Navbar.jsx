@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ShieldCheck } from 'lucide-react'
 import { lembagaInfo } from '../../data'
 
 const navLinks = [
     { to: '/profil', label: 'Profil' },
     { to: '/program', label: 'Program' },
-    { to: '/santri', label: 'Santri' },
     { to: '/jadwal', label: 'Jadwal' },
     { to: '/berita', label: 'Berita' },
     { to: '/galeri', label: 'Galeri' },
@@ -37,8 +36,8 @@ export default function Navbar() {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5, ease: 'easeOut' }}
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${scrolled
-                        ? 'bg-green-950/97 backdrop-blur-xl shadow-green-lg border-b border-gold-600/20'
-                        : 'bg-green-950/80 backdrop-blur-md'
+                    ? 'bg-green-950/97 backdrop-blur-xl shadow-green-lg border-b border-gold-600/20'
+                    : 'bg-green-950/80 backdrop-blur-md'
                     }`}
             >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 h-[70px] flex items-center justify-between">
@@ -97,10 +96,11 @@ export default function Navbar() {
                     {/* CTA + Hamburger */}
                     <div className="flex items-center gap-3">
                         <Link
-                            to="/kontak"
+                            to="/santri"
                             className="hidden lg:inline-flex items-center gap-2 bg-gradient-to-r from-gold-600 to-gold-400 text-green-900 font-bold text-xs px-5 py-2.5 rounded-full tracking-wide transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(201,168,76,0.4)]"
                         >
-                            Hubungi Kami
+                            <ShieldCheck size={14} />
+                            Pantau Santri
                         </Link>
 
                         <button
@@ -163,11 +163,12 @@ export default function Navbar() {
 
                             <div className="p-5 border-t border-gold-600/10">
                                 <Link
-                                    to="/kontak"
+                                    to="/santri"
                                     onClick={() => setOpen(false)}
-                                    className="block text-center bg-gradient-to-r from-gold-600 to-gold-400 text-green-900 font-bold text-sm py-3 rounded-full tracking-wide"
+                                    className="flex items-center justify-center gap-2 text-center bg-gradient-to-r from-gold-600 to-gold-400 text-green-900 font-bold text-sm py-3 rounded-full tracking-wide"
                                 >
-                                    Hubungi Kami
+                                    <ShieldCheck size={15} />
+                                    Pantau Santri
                                 </Link>
                             </div>
                         </motion.div>

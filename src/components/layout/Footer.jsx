@@ -15,7 +15,7 @@ const navGroups = [
     {
         title: 'Informasi',
         links: [
-            { to: '/santri', label: 'Data Santri' },
+            { to: '/santri', label: 'Pantau Santri' },
             { to: '/berita', label: 'Berita & Pengumuman' },
             { to: '/kontak', label: 'Hubungi Kami' },
         ],

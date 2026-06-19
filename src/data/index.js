@@ -83,99 +83,263 @@ export const programData = [
 ]
 
 // ==================== SANTRI ====================
-// Tingkatan Kelas:
+// Tingkatan Kelas (status: Ziyadah — sedang menghafal):
 //   1 → Juz  1–5   |  2 → Juz  6–10  |  3 → Juz 11–15
 //   4 → Juz 16–20  |  5 → Juz 21–25  |  6 → Juz 26–30
-//   T → Takhassus  (sudah khatam 30 juz)
+//   Status Takhassus → sudah khatam 30 juz (Khotim)
 //
-// Field: id | nama | tingkat ('1'–'6' | 'T') | juz | awalMenghafal
+// Aturan baku:
+//   • 1 Juz = 20 halaman
+//   • 1 semester = 6 bulan, target minimal hafalan = 3 Juz (60 halaman)/semester
+//   • 1 periode (tahun ajaran) = 1 tahun = 2 semester (Ganjil & Genap)
+//   • Periode berjalan saat ini: 2025/2026 — semester aktif: Genap
+//
+// Login Wali Santri:
+//   • Username = nama lengkap santri TANPA SPASI (tidak case-sensitive)
+//   • Password = tanggal lahir santri format YYYY-MM-DD
+//
+// ⚠️ PENTING — DATA BELUM LENGKAP:
+//   Data di bawah diimpor dari file Excel "Rekap_hafalan_2025-2026.xlsx" yang
+//   TIDAK memuat alamat, tahun masuk, maupun tanggal lahir santri. Field-field
+//   tersebut sementara diisi placeholder (alamat/tahunMasuk = null akan
+//   tampil "Belum tersedia" di halaman; tanggalLahir = tanggal acak/palsu).
+//
+//   ⚠️ tanggalLahir DIPAKAI SEBAGAI PASSWORD LOGIN WALI SANTRI — wajib diganti
+//   dengan tanggal lahir ASLI tiap santri sebelum website ini digunakan,
+//   atau wali santri tidak akan bisa login dengan data yang benar.
+//   Cari baris bertanda "// ⚠️ GANTI dengan tgl lahir asli" di bawah ini.
+//
+// Catatan tradisi hafalan pesantren ini: santri memulai hafalan dari JUZ 30
+// (Juz 'Amma) terlebih dahulu, baru lanjut Juz 1, 2, 3, ... hingga Juz 29.
+// Karena itu perhitungan progres halaman memakai "urutan hafalan", BUKAN
+// nomor juz absolut — lihat fungsi `urutanJuz()` & `keHalamanKum()` yang
+// dipakai di halaman SantriPage.jsx.
 
-export const santriData = [
-    // ── Takhassus (30 juz) ───────────────────────────────────────
-    { id: 1, nama: 'Ali Akbar Nafis', tingkat: 'T', juz: 30, awalMenghafal: '2015' },
-    { id: 2, nama: 'Miftahul Arifin', tingkat: 'T', juz: 30, awalMenghafal: '2017' },
-    { id: 3, nama: 'Fathorrahman', tingkat: 'T', juz: 30, awalMenghafal: '2017' },
-    { id: 4, nama: 'Ahmad Nurhadi', tingkat: 'T', juz: 30, awalMenghafal: '2018' },
-    { id: 5, nama: 'Ahmad Fathen Nabil', tingkat: 'T', juz: 30, awalMenghafal: '2017' },
-    { id: 6, nama: 'Lutfan Syafiq', tingkat: 'T', juz: 30, awalMenghafal: '2016' },
-    { id: 7, nama: 'Moh. Rizal', tingkat: 'T', juz: 30, awalMenghafal: '2023' },
-    { id: 8, nama: 'Ach. Hariri', tingkat: 'T', juz: 30, awalMenghafal: '2023' },
-    { id: 9, nama: 'Ahmad Ariyanto', tingkat: 'T', juz: 30, awalMenghafal: '2023' },
-    { id: 10, nama: 'Sayyid Ghufron Karim', tingkat: 'T', juz: 30, awalMenghafal: '2023' },
-    { id: 11, nama: 'Moh. Muhyiddin Al-Maulidi', tingkat: 'T', juz: 30, awalMenghafal: '2023' },
-    { id: 12, nama: 'Moh. Jailani', tingkat: 'T', juz: 30, awalMenghafal: '2023' },
-    { id: 13, nama: 'Toriq Ilham', tingkat: 'T', juz: 30, awalMenghafal: '2023' },
-    { id: 16, nama: 'Faizal Arifin', tingkat: 'T', juz: 30, awalMenghafal: '2024' },
-    { id: 17, nama: 'Nazhaqi Firdaus Salam', tingkat: 'T', juz: 30, awalMenghafal: '2024' },
-    { id: 18, nama: 'Miftah', tingkat: 'T', juz: 30, awalMenghafal: '2024' },
-    { id: 19, nama: 'Waridullah', tingkat: 'T', juz: 30, awalMenghafal: '2024' },
-    { id: 20, nama: 'Moh. Imron Rosyadi', tingkat: 'T', juz: 30, awalMenghafal: '2020' },
-    
-    // ── Tingkat 6 (Juz 26–30) ────────────────────────────────────
-    { id: 21, nama: 'Hanif Hidayatullah', tingkat: '6', juz: 27, awalMenghafal: '2023' },
-    { id: 22, nama: 'Syarif Murtadha', tingkat: '6', juz: 28, awalMenghafal: '2021' },
-    
-    // ── Tingkat 5 (Juz 21–25) ────────────────────────────────────
-    { id: 23, nama: 'Fikri Haikal Farodis', tingkat: '5', juz: 22, awalMenghafal: '2021' },
-    
-    // ── Tingkat 4 (Juz 16–20) ────────────────────────────────────
-    { id: 24, nama: 'Ahmad Fa\'abiel Riyadh Amini', tingkat: '4', juz: 17, awalMenghafal: '2023' },
-    { id: 25, nama: 'Rian Maulana', tingkat: '4', juz: 16, awalMenghafal: '2023' },
-    { id: 26, nama: 'Chairullana', tingkat: '4', juz: 16, awalMenghafal: '2023' },
-    
-    // ── Tingkat 3 (Juz 11–15) ────────────────────────────────────
-    { id: 27, nama: 'Ali Zainal Abidin', tingkat: '3', juz: 12, awalMenghafal: '2018' },
-    { id: 28, nama: 'Moh. Faizal Amrullah', tingkat: '3', juz: 15, awalMenghafal: '2018' },
-    { id: 29, nama: 'Ahmad Mudzakkir Dhiya\'ul Haq', tingkat: '3', juz: 14, awalMenghafal: '2018' },
-    { id: 30, nama: 'Moh. Avif Ilham', tingkat: '3', juz: 11, awalMenghafal: '2018' },
-    { id: 31, nama: 'Ahmad Naufal Saiful Nizar', tingkat: '3', juz: 11, awalMenghafal: '2018' },
-    { id: 32, nama: 'M. Wildan Nabil Musthafa Qolbi', tingkat: '3', juz: 12, awalMenghafal: '2022' },
-    { id: 33, nama: 'Riyyan Qomary Riko Putra', tingkat: '3', juz: 11, awalMenghafal: '2022' },
-    { id: 34, nama: 'Moh. Rijalul Amin', tingkat: '3', juz: 14, awalMenghafal: '2022' },
-    { id: 35, nama: 'Zainurrahman', tingkat: '3', juz: 11, awalMenghafal: '2022' },
-    { id: 37, nama: 'Moh. Aqil Mubarak', tingkat: '3', juz: 11, awalMenghafal: '2022' },
-    
-    // ── Tingkat 2 (Juz 6–10) ─────────────────────────────────────
-    { id: 36, nama: 'M Rizqi Akbar Al-Mahroini', tingkat: '5', juz: 6, awalMenghafal: '2022' },
-    { id: 38, nama: 'Moh. Afdhal', tingkat: '2', juz: 6, awalMenghafal: '2023' },
-    { id: 39, nama: 'Miftahul Nizar', tingkat: '2', juz: 8, awalMenghafal: '2023' },
-    { id: 40, nama: 'Ahmad Panji Hidayat Nur', tingkat: '2', juz: 9, awalMenghafal: '2022' },
-    { id: 41, nama: 'M. Jurfrianto', tingkat: '2', juz: 10, awalMenghafal: '2022' },
-    { id: 42, nama: 'Alfin Maulana', tingkat: '2', juz: 9, awalMenghafal: '2022' },
-    { id: 43, nama: 'Moh. Hisyam Tijani', tingkat: '2', juz: 7, awalMenghafal: '2022' },
-    { id: 44, nama: 'Moh. Wadud', tingkat: '2', juz: 8, awalMenghafal: '2022' },
-    { id: 45, nama: 'Fakhril Ali Rahman', tingkat: '2', juz: 8, awalMenghafal: '2022' },
-    { id: 46, nama: 'Sulaiman', tingkat: '2', juz: 8, awalMenghafal: '2022' },
-    { id: 47, nama: 'Haidar Sayyid Ali Adnan', tingkat: '2', juz: 10, awalMenghafal: '2023' },
-    
-    // ── Tingkat 1 (Juz 1–5) ──────────────────────────────────────
-    { id: 48, nama: 'Roisul Imam', tingkat: '1', juz: 4, awalMenghafal: 'Sep 2022' },
-    { id: 49, nama: 'M. Wildan Zainul Muzammil', tingkat: '1', juz: 3, awalMenghafal: 'Sep 2022' },
-    { id: 50, nama: 'Prabu Miladi Muhammad Nurdin', tingkat: '1', juz: 5, awalMenghafal: 'Okt 2022' },
-    { id: 51, nama: 'Ahmad Madani', tingkat: '1', juz: 3, awalMenghafal: 'Okt 2022' },
-    { id: 52, nama: 'Moh. Akmal Mirza Lutfan', tingkat: '1', juz: 3, awalMenghafal: '2022' },
-    { id: 53, nama: 'Ahmad Nur Rizqi Ramadhani', tingkat: '1', juz: 3, awalMenghafal: '2022' },
-    { id: 54, nama: 'Muhammad Agus', tingkat: '1', juz: 3, awalMenghafal: '2023' },
-    { id: 55, nama: 'Abdul Qadir El-Jailani', tingkat: '1', juz: 3, awalMenghafal: '2023' },
-    { id: 56, nama: 'Zidan Fatih Rizqi', tingkat: '1', juz: 2, awalMenghafal: '2023' },
-    { id: 57, nama: 'Maulana Ahmad Ridha', tingkat: '1', juz: 4, awalMenghafal: '2023' },
-    { id: 58, nama: 'Faiqur Rosi', tingkat: '1', juz: 3, awalMenghafal: '2023' },
-    { id: 59, nama: 'Febri Andi Pratama', tingkat: '1', juz: 3, awalMenghafal: '2023' },
-    { id: 60, nama: 'Sulthan Muhammad Al-Fatih', tingkat: '1', juz: 2, awalMenghafal: '2023' },
-    { id: 61, nama: 'Moh. Zaki Alwan', tingkat: '1', juz: 3, awalMenghafal: '2023' },
+const HALAMAN_PER_JUZ = 20
+const PERIODE_AKTIF   = '2025/2026'
+const SEMESTER_AKTIF  = 'Genap'
+
+const santriDataReal = [
+  { id:  1, nama: 'Waridullah', status: 'takhassus', tingkat: 'T', juz: 30,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2008-10-21', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [] },
+  { id:  2, nama: 'Miftah', status: 'takhassus', tingkat: 'T', juz: 30,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2004-08-27', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [] },
+  { id:  3, nama: 'Moh. Faizal Amrullah', status: 'ziyadah', tingkat: '3', juz: 15,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2008-01-25', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 12, awalHalaman: 1, akhirJuz: 13, akhirHalaman: 10 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 14, awalHalaman: 1, akhirJuz: 15, akhirHalaman: 5 }
+    ] },
+  { id:  4, nama: 'Hanif Hidayatullah', status: 'ziyadah', tingkat: '5', juz: 24,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2006-06-25', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 24, awalHalaman: 14, akhirJuz: 24, akhirHalaman: 14 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 24, awalHalaman: 14, akhirJuz: 24, akhirHalaman: 14 }
+    ] },
+  { id:  5, nama: 'Ahmad Mudzakkir Diya\'ul Haq', status: 'ziyadah', tingkat: '3', juz: 14,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2008-05-04', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 11, awalHalaman: 1, akhirJuz: 13, akhirHalaman: 10 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 14, awalHalaman: 1, akhirJuz: 14, akhirHalaman: 3 }
+    ] },
+  { id:  6, nama: 'Moh. Imron Rhasyadi', status: 'ziyadah', tingkat: '6', juz: 29,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2008-10-31', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 19, awalHalaman: 1, akhirJuz: 25, akhirHalaman: 14 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 27, awalHalaman: 1, akhirJuz: 29, akhirHalaman: 20 }
+    ] },
+  { id:  7, nama: 'Chairullana', status: 'ziyadah', tingkat: '4', juz: 16,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2008-04-29', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 11, awalHalaman: 1, akhirJuz: 14, akhirHalaman: 20 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 16, awalHalaman: 1, akhirJuz: 16, akhirHalaman: 19 }
+    ] },
+  { id:  8, nama: 'Syarif Murtadha', status: 'ziyadah', tingkat: '6', juz: 29,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2006-09-20', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 23, awalHalaman: 2, akhirJuz: 25, akhirHalaman: 20 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 27, awalHalaman: 1, akhirJuz: 29, akhirHalaman: 20 }
+    ] },
+  { id:  9, nama: 'Fikri Haikal Farodis', status: 'ziyadah', tingkat: '6', juz: 29,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2008-01-19', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 17, awalHalaman: 8, akhirJuz: 20, akhirHalaman: 20 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 21, awalHalaman: 19, akhirJuz: 29, akhirHalaman: 20 }
+    ] },
+  { id: 10, nama: 'M. Wildan Nabil Musthafa Qolbi', status: 'ziyadah', tingkat: '3', juz: 11,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2010-02-02', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 9, awalHalaman: 1, akhirJuz: 10, akhirHalaman: 14 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 11, awalHalaman: 1, akhirJuz: 11, akhirHalaman: 20 }
+    ] },
+  { id: 12, nama: 'Moh. Rijalul Amin', status: 'ziyadah', tingkat: '3', juz: 14,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2008-05-18', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 11, awalHalaman: 1, akhirJuz: 13, akhirHalaman: 18 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 13, awalHalaman: 19, akhirJuz: 14, akhirHalaman: 3 }
+    ] },
+  { id: 13, nama: 'M. Rizqi Akbar Almahroini', status: 'ziyadah', tingkat: '2', juz: 10,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2010-10-12', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 6, awalHalaman: 1, akhirJuz: 8, akhirHalaman: 20 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 9, awalHalaman: 20, akhirJuz: 10, akhirHalaman: 20 }
+    ] },
+  { id: 14, nama: 'Ahmad Panji Hidayat Nur', status: 'ziyadah', tingkat: '2', juz: 8,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2007-11-01', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 6, awalHalaman: 1, akhirJuz: 7, akhirHalaman: 9 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 7, awalHalaman: 19, akhirJuz: 8, akhirHalaman: 20 }
+    ] },
+  { id: 15, nama: 'M. Jufriyanto', status: 'ziyadah', tingkat: '2', juz: 9,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2010-05-02', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 6, awalHalaman: 1, akhirJuz: 8, akhirHalaman: 20 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 9, awalHalaman: 4, akhirJuz: 9, akhirHalaman: 20 }
+    ] },
+  { id: 16, nama: 'Alfin Maulana', status: 'ziyadah', tingkat: '2', juz: 8,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2008-05-21', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 6, awalHalaman: 1, akhirJuz: 7, akhirHalaman: 17 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 7, awalHalaman: 6, akhirJuz: 8, akhirHalaman: 20 }
+    ] },
+  { id: 17, nama: 'Moh. Hisyam Tijani', status: 'ziyadah', tingkat: '2', juz: 8,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2007-07-12', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 5, awalHalaman: 10, akhirJuz: 6, akhirHalaman: 20 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 7, awalHalaman: 1, akhirJuz: 8, akhirHalaman: 9 }
+    ] },
+  { id: 18, nama: 'Moh. Wadud', status: 'ziyadah', tingkat: '2', juz: 7,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2008-12-04', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 4, awalHalaman: 17, akhirJuz: 6, akhirHalaman: 7 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 7, awalHalaman: 6, akhirJuz: 7, akhirHalaman: 18 }
+    ] },
+  { id: 19, nama: 'Fakhril Ali Rahman', status: 'ziyadah', tingkat: '2', juz: 7,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2009-07-02', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 5, awalHalaman: 1, akhirJuz: 5, akhirHalaman: 10 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 6, awalHalaman: 1, akhirJuz: 7, akhirHalaman: 20 }
+    ] },
+  { id: 20, nama: 'Sulaiman', status: 'ziyadah', tingkat: '2', juz: 8,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2009-11-12', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 5, awalHalaman: 15, akhirJuz: 6, akhirHalaman: 12 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 7, awalHalaman: 13, akhirJuz: 8, akhirHalaman: 15 }
+    ] },
+  { id: 21, nama: 'Haidar Sayyid Ali Adnan', status: 'ziyadah', tingkat: '2', juz: 6,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2026-06-20', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 1, awalHalaman: 1, akhirJuz: 3, akhirHalaman: 20 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 4, awalHalaman: 13, akhirJuz: 6, akhirHalaman: 2 }
+    ] },
+  { id: 22, nama: 'Roisul Imam', status: 'ziyadah', tingkat: '1', juz: 4,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2011-12-02', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 30, awalHalaman: 1, akhirJuz: 2, akhirHalaman: 10 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 3, awalHalaman: 9, akhirJuz: 4, akhirHalaman: 3 }
+    ] },
+  { id: 23, nama: 'M. Wildan Zainul Muzammil', status: 'ziyadah', tingkat: '1', juz: 2,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2009-12-23', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 30, awalHalaman: 1, akhirJuz: 1, akhirHalaman: 19 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 2, awalHalaman: 5, akhirJuz: 2, akhirHalaman: 20 }
+    ] },
+  { id: 24, nama: 'Prabu Miladi Muhammad Nurdin', status: 'ziyadah', tingkat: '1', juz: 4,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2007-03-02', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 30, awalHalaman: 1, akhirJuz: 3, akhirHalaman: 8 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 4, awalHalaman: 9, akhirJuz: 4, akhirHalaman: 20 }
+    ] },
+  { id: 25, nama: 'Ach. Madani', status: 'ziyadah', tingkat: '1', juz: 2,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2008-09-29', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 30, awalHalaman: 1, akhirJuz: 1, akhirHalaman: 20 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 2, awalHalaman: 13, akhirJuz: 2, akhirHalaman: 20 }
+    ] },
+  { id: 26, nama: 'Moh. Akmal Mirza Lutfan', status: 'ziyadah', tingkat: '1', juz: 3,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2026-06-20', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 30, awalHalaman: 1, akhirJuz: 2, akhirHalaman: 10 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 3, awalHalaman: 1, akhirJuz: 3, akhirHalaman: 3 }
+    ] },
+  { id: 27, nama: 'Ahmad Nur Rizqi Ramadhani', status: 'ziyadah', tingkat: '1', juz: 2,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2010-09-13', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 30, awalHalaman: 1, akhirJuz: 1, akhirHalaman: 18 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 2, awalHalaman: 1, akhirJuz: 2, akhirHalaman: 20 }
+    ] },
+  { id: 28, nama: 'Muhammad Agus', status: 'ziyadah', tingkat: '1', juz: 2,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2010-08-10', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 30, awalHalaman: 1, akhirJuz: 1, akhirHalaman: 14 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 2, awalHalaman: 1, akhirJuz: 2, akhirHalaman: 20 }
+    ] },
+  { id: 29, nama: 'Abdul Qadir El-Jailani', status: 'ziyadah', tingkat: '1', juz: 3,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2011-11-24', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 30, awalHalaman: 1, akhirJuz: 2, akhirHalaman: 5 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 2, awalHalaman: 6, akhirJuz: 3, akhirHalaman: 1 }
+    ] },
+  { id: 30, nama: 'Zidan Fatih Rizqi', status: 'ziyadah', tingkat: '1', juz: 2,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2010-03-18', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 30, awalHalaman: 1, akhirJuz: 2, akhirHalaman: 2 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 2, awalHalaman: 5, akhirJuz: 2, akhirHalaman: 20 }
+    ] },
+  { id: 31, nama: 'Maulana Ahmad Ridha', status: 'ziyadah', tingkat: '1', juz: 3,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2010-07-27', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 30, awalHalaman: 1, akhirJuz: 2, akhirHalaman: 19 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 3, awalHalaman: 13, akhirJuz: 3, akhirHalaman: 20 }
+    ] },
+  { id: 32, nama: 'Faiqur Rosi', status: 'ziyadah', tingkat: '1', juz: 2,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2010-12-28', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 30, awalHalaman: 1, akhirJuz: 1, akhirHalaman: 13 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 2, awalHalaman: 1, akhirJuz: 2, akhirHalaman: 20 }
+    ] },
+  { id: 33, nama: 'Febry Andika Pratama', status: 'ziyadah', tingkat: '1', juz: 2,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2010-02-10', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 30, awalHalaman: 1, akhirJuz: 1, akhirHalaman: 14 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 2, awalHalaman: 1, akhirJuz: 2, akhirHalaman: 20 }
+    ] },
+  { id: 34, nama: 'Sulthan Muhammad Al-Fatih', status: 'ziyadah', tingkat: '1', juz: 2,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2011-06-25', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Ganjil', awalJuz: 30, awalHalaman: 1, akhirJuz: 1, akhirHalaman: 7 },
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 1, awalHalaman: 11, akhirJuz: 2, akhirHalaman: 9 }
+    ] },
+  { id: 35, nama: 'Moh. Zaky Alwan', status: 'ziyadah', tingkat: '1', juz: 4,
+    alamat: null, tahunMasuk: null, tanggalLahir: '2026-06-20', // ⚠️ GANTI dengan tgl lahir asli
+    riwayatSemester: [
+      { periode: '2025/2026', semester: 'Genap', awalJuz: 30, awalHalaman: 1, akhirJuz: 4, akhirHalaman: 20 }
+    ] },
 ]
 
-// Definisi tingkatan kelas
+export const santriData = santriDataReal
+
+// Definisi tingkatan kelas (khusus status Ziyadah)
 export const tingkatanData = {
-    '1': { label: 'Tingkat 1', rentang: 'Juz 1 – 5', minJuz: 1, maxJuz: 5, color: 'bg-sky-50 text-sky-700 border-sky-200' },
-    '2': { label: 'Tingkat 2', rentang: 'Juz 6 – 10', minJuz: 6, maxJuz: 10, color: 'bg-teal-50 text-teal-700 border-teal-200' },
-    '3': { label: 'Tingkat 3', rentang: 'Juz 11 – 15', minJuz: 11, maxJuz: 15, color: 'bg-emerald-50 text-emerald-700 border-emerald-200' },
-    '4': { label: 'Tingkat 4', rentang: 'Juz 16 – 20', minJuz: 16, maxJuz: 20, color: 'bg-green-50 text-green-700 border-green-200' },
-    '5': { label: 'Tingkat 5', rentang: 'Juz 21 – 25', minJuz: 21, maxJuz: 25, color: 'bg-lime-50 text-lime-700 border-lime-200' },
-    '6': { label: 'Tingkat 6', rentang: 'Juz 26 – 30', minJuz: 26, maxJuz: 30, color: 'bg-amber-50 text-amber-700 border-amber-200' },
-    'T': { label: 'Takhassus', rentang: '30 Juz Khatam', minJuz: 30, maxJuz: 30, color: 'bg-gold-100 text-gold-800 border-gold-400' },
+  '1': { label: 'Tingkat 1', rentang: 'Juz 1 – 5',   minJuz: 1,  maxJuz: 5,  color: 'bg-sky-50 text-sky-700 border-sky-200'       },
+  '2': { label: 'Tingkat 2', rentang: 'Juz 6 – 10',  minJuz: 6,  maxJuz: 10, color: 'bg-teal-50 text-teal-700 border-teal-200'     },
+  '3': { label: 'Tingkat 3', rentang: 'Juz 11 – 15', minJuz: 11, maxJuz: 15, color: 'bg-emerald-50 text-emerald-700 border-emerald-200' },
+  '4': { label: 'Tingkat 4', rentang: 'Juz 16 – 20', minJuz: 16, maxJuz: 20, color: 'bg-green-50 text-green-700 border-green-200'   },
+  '5': { label: 'Tingkat 5', rentang: 'Juz 21 – 25', minJuz: 21, maxJuz: 25, color: 'bg-lime-50 text-lime-700 border-lime-200'      },
+  '6': { label: 'Tingkat 6', rentang: 'Juz 26 – 30', minJuz: 26, maxJuz: 30, color: 'bg-amber-50 text-amber-700 border-amber-200'   },
+  'T': { label: 'Takhassus', rentang: '30 Juz Khatam',minJuz: 30, maxJuz: 30, color: 'bg-gold-100 text-gold-800 border-gold-400'    },
 }
 
+// Konstanta aturan akademik (dipakai di halaman pemantauan wali santri)
+export const aturanAkademik = {
+  halamanPerJuz: HALAMAN_PER_JUZ,
+  targetJuzPerSemester: 3,
+  bulanPerSemester: 6,
+  periodeAktif: PERIODE_AKTIF,
+  semesterAktif: SEMESTER_AKTIF,
+}
 // ==================== JADWAL ====================
 export const jadwalData = [
     { waktu: '03.00', ket: 'WIB', kegiatan: 'Qiyamul Lail & Subuh Berjamaah', detail: 'Shalat tahajjud, witir, dan subuh berjama\'ah di masjid', tag: 'Ibadah', tagColor: 'ibadah' },
@@ -224,7 +388,7 @@ export const beritaData = [
         tanggal: '15 Januari 2025',
         penulis: 'Admin LTQ',
         waktuBaca: '3 menit',
-        foto: '/images/berita/juara-mtq.png',           // ← ganti: '/images/berita/mtq-juara1.jpg'
+        foto: '/images/berita/juara-mtq.png',
         fallbackIcon: '🏆',
         fallbackBg: 'from-green-900 to-green-700',
         featured: true,
@@ -258,7 +422,7 @@ export const beritaData = [
         tanggal: '10 Januari 2025',
         penulis: 'Admin LTQ',
         waktuBaca: '4 menit',
-        foto: '/images/berita/ramadan.jpeg',           // ← ganti: '/images/berita/psb-2025.jpg'
+        foto: '/images/berita/ramadan.jpeg',
         fallbackIcon: '📢',
         fallbackBg: 'from-green-800 to-green-600',
         featured: false,
@@ -307,7 +471,7 @@ export const beritaData = [
         tanggal: '28 Desember 2024',
         penulis: 'Tim Redaksi LTQ',
         waktuBaca: '5 menit',
-        foto: '/images/berita/haflah.jpeg',           // ← ganti: '/images/berita/haflah-khotmil-8.jpg'
+        foto: '/images/berita/haflah.jpeg',
         fallbackIcon: '🎓',
         fallbackBg: 'from-green-950 to-green-800',
         featured: false,
@@ -317,14 +481,11 @@ export const beritaData = [
             { tipe: 'h3', isi: 'Delapan Hafidz & Hafidzah Baru' },
             {
                 tipe: 'ul', isi: [
-                    'Ahmad Fauzan Al-Hakim — Hafidz 30 Juz (Putra)',
-                    'Siti Khadijah Azzahra — Hafidzah 30 Juz (Putri)',
-                    'Muhammad Rizki Maulana — Hafidz 30 Juz (Putra)',
-                    'Aisyah Nur Hikmah — Hafidzah 30 Juz (Putri)',
-                    'Abdurrahman Wahid Hasyim — Hafidz 30 Juz (Putra)',
-                    'Fatimah Az-Zahra Husain — Hafidzah 30 Juz (Putri)',
-                    'Ibrahim Al-Fatih Ramadhan — Hafidz 30 Juz (Putra)',
-                    'Zaid bin Tsabit Anwar — Hafidz 30 Juz (Putra)',
+                    'Ahmad Fauzan Al-Hakim — Hafidz 30 Juz',
+                    'Muhammad Rizki Maulana — Hafidz 30 Juz',
+                    'Abdurrahman Wahid Hasyim — Hafidz 30 Juz',
+                    'Ibrahim Al-Fatih Ramadhan — Hafidz 30 Juz',
+                    'Zaid bin Tsabit Anwar — Hafidz 30 Juz)',
                 ]
             },
             { tipe: 'quote', isi: 'Melihat anak saya menerima ijazah hafalan Al-Qur\'an adalah momen paling membahagiakan dalam hidup saya. Terima kasih LTQ, terima kasih para ustadz yang telah membimbing dengan sabar dan penuh kasih.', sumber: 'Bapak Hasyim — Wali Santri' },
@@ -342,7 +503,7 @@ export const beritaData = [
         tanggal: '20 Desember 2024',
         penulis: 'Tim Redaksi LTQ',
         waktuBaca: '3 menit',
-        foto: '/images/berita/workshop.jpeg',           // ← ganti: '/images/berita/workshop-ustadz.jpg'
+        foto: '/images/berita/workshop.jpeg',
         fallbackIcon: '📚',
         fallbackBg: 'from-green-900 to-green-700',
         featured: false,
@@ -403,7 +564,7 @@ export const beritaData = [
         tanggal: '2 Januari 2025',
         penulis: 'Admin LTQ',
         waktuBaca: '5 menit',
-        foto: '/images/berita/studi-banding.jpeg',           // ← ganti: '/images/berita/ramadhan-1446.jpg'
+        foto: '/images/berita/studi-banding.jpeg',
         fallbackIcon: '🏫',
         fallbackBg: 'from-green-800 to-green-600',
         featured: false,
